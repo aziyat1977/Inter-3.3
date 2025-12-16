@@ -1,25 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface FadeInSectionProps {
+interface SlideProps {
   children: React.ReactNode;
-  id?: string;
-  className?: string;
 }
 
-export const FadeInSection: React.FC<FadeInSectionProps> = ({ children, id, className = "" }) => {
+const Slide: React.FC<SlideProps> = ({ children }) => {
   return (
-    <motion.section
-      id={id}
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`w-full ${className}`}
+    <motion.div
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -50 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="w-full h-full flex flex-col justify-center items-center"
     >
       {children}
-    </motion.section>
+    </motion.div>
   );
 };
 
-export default FadeInSection;
+export default Slide;

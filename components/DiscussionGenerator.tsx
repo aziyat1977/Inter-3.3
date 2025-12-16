@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Shuffle } from 'lucide-react';
-import FadeInSection from './FadeInSection';
 
 const QUESTIONS = [
   "Do you work better under pressure or when you are relaxed?",
@@ -54,30 +53,30 @@ const DiscussionGenerator: React.FC = () => {
   };
 
   return (
-    <FadeInSection id="questions" className="mb-20">
-      <h2 className="text-3xl md:text-4xl font-display font-black mb-4 border-l-8 border-primary pl-6">
-        6. DISCUSSION GENERATOR 🗣️
+    <div className="w-full max-w-4xl text-center">
+      <h2 className="text-4xl md:text-5xl font-display font-black mb-12">
+        7. DISCUSSION 🗣️
       </h2>
-      <p className="mb-8 text-lg opacity-80">
-        35 Questions about Stress, Success, and Life.
-      </p>
 
-      <div className="max-w-3xl mx-auto">
-        <div className={`min-h-[200px] flex items-center justify-center p-8 mb-8 rounded-3xl text-center text-white text-2xl md:text-3xl font-bold shadow-2xl transition-all duration-300 transform bg-gradient-to-br from-[#FF416C] to-[#FF4B2B] dark:from-[#0575E6] dark:to-[#021B79] ${animating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
-           {currentQuestion}
+      <div className="max-w-3xl mx-auto relative group">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary to-secondary rounded-[2rem] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
+        
+        <div className={`relative min-h-[250px] flex items-center justify-center p-12 mb-12 rounded-[2rem] text-center text-white text-3xl md:text-4xl font-bold shadow-2xl transition-all duration-300 transform bg-gradient-to-br from-[#FF416C] to-[#FF4B2B] dark:from-[#0575E6] dark:to-[#021B79] border-4 border-white/20 overflow-hidden ${animating ? 'opacity-0 scale-90' : 'opacity-100 scale-100'}`}>
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1000&auto=format&fit=crop" className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay" alt="Friends talking" />
+           <span className="relative z-10">{currentQuestion}</span>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center relative z-20">
             <button
                 onClick={generate}
-                className="group relative px-10 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-black text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 overflow-hidden"
+                className="group relative px-12 py-6 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-black text-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex items-center gap-4 overflow-hidden"
             >
-                <Shuffle className="group-hover:rotate-180 transition-transform duration-500" />
+                <Shuffle size={32} className="group-hover:rotate-180 transition-transform duration-500" />
                 <span className="relative z-10">New Question</span>
             </button>
         </div>
       </div>
-    </FadeInSection>
+    </div>
   );
 };
 
